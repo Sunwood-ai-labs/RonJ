@@ -4,3 +4,15 @@
 
 
 # ろんJ
+
+
+
+## setup
+
+docker-compose up
+
+## demo
+
+docker-compose exec ron-j python demo/demo_style_bert_api.py
+
+##
