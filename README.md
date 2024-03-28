@@ -15,7 +15,7 @@
 
 「ろんJ」は、アップロードした論文の内容を、あの有名な２ちゃんねるの「なんでも実況J」（通称：なんJ）のスレッド風に解説・実況してくれる画期的なサービスです。難解な論文の内容を、親しみやすいなんJのノリで楽しく理解することができます。
 
-![](docs/RonJ-Mini-30s.gif)
+![](https://github.com/Sunwood-ai-labs/RonJ/blob/main/docs/RonJ-Mini-30s.gif)
 
 ## 特徴
 
