@@ -9,6 +9,17 @@ import os
 from pydub import AudioSegment
 import re
 
+st.set_page_config(
+    page_title="RonJ",
+    page_icon="📚",
+    # layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://github.com/Sunwood-ai-labs/RonJ.git',
+        'About': "RonJ～論文を面白おかしく理解するツール～"
+    }
+)
+
 with st.sidebar:
     st.markdown("""
 <p align="center">
