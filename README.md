@@ -5,9 +5,11 @@
 
 # ろんJ - 論文を面白おかしく理解するツール
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue)](https://www.python.org/)
-[![Docker](https://img.shields.io/badge/docker-available-blue)](https://www.docker.com/)
+<p align="center">
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+  [![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
+  [![Docker](https://img.shields.io/badge/docker-available-blue)](https://www.docker.com/)
+</p>
 
 論文は難しそうで読むのが億劫だと感じたことはありませんか？でもそんな人でも、「ろんJ」を使えば論文の内容が面白おかしく理解できるかもしれません。
 
