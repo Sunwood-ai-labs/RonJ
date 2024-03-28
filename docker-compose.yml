@@ -42,6 +42,6 @@ services:
       - .env
     working_dir: /app
     tty: true
-    command: streamlit run streamlit/main.py --server.port 8502
+    command: streamlit run app.py --server.port 8502
     # network_mode: "host"
 

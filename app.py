@@ -9,6 +9,17 @@ import os
 from pydub import AudioSegment
 import re
 
+with st.sidebar:
+    st.markdown("""
+<p align="center">
+    <h1 align="center">Ron J</h1>
+    <img src="https://raw.githubusercontent.com/Sunwood-ai-labs/RonJ/main/docs/icon_mini.png" width="100%">
+    <br>
+</p>
+
+    """, unsafe_allow_html=True)
+
+
 # サイドバーでパラメータを設定
 json_file_path = st.sidebar.text_input("JSONファイルのパス", "data/ViTAR_KANA.json")
 emoji_file_path = st.sidebar.text_input("絵文字のテキストファイルのパス", "assets/emojis.txt")
@@ -132,7 +143,9 @@ def play_audio(text, voice_id):
     os.remove(audio_path)
 
 def main():
+    # st.title("解説求む!新しいVision Transformerアーキテクチャ「ViTAR」")
     st.title("解説求む!新しいVision Transformerアーキテクチャ「ViTAR」")
+
     
     if st.button("再生"):
         chat_data = load_chat_data(json_file_path)
