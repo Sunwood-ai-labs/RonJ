@@ -37,6 +37,8 @@
    docker-compose up -d
    ```
 
+   Dockerコンテナについての詳細はこちらを参照してください。([docker/README.md](docker/README.md))
+
 3. セットアップが完了したら、ブラウザで `http://localhost:8502/` にアクセスしてください。
 
 ## 使い方
@@ -89,9 +91,6 @@ docker-compose exec ron-j python demo/demo_style_bert_api.py
 
 プルリクエストや改善案は大歓迎です！バグ報告や機能リクエストがある場合は、Issueを作成してください。
 
-## 連絡先
-
-質問やフィードバックがある場合は、[メールアドレス]までお気軽にお問い合わせください。
 
 ---
 
