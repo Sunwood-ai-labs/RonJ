@@ -40,8 +40,8 @@
    Dockerコンテナについての詳細はこちらを参照してください。([docker/README.md](docker/README.md))
 
 3. セットアップが完了したら、ブラウザで `http://localhost:8502/` にアクセスしてください。
-      
-    ろんJのStreamlitアプリケーションについてはこちらを参照してください。([docs/README.app.md](docs\README.app.md))
+
+    ろんJのStreamlitアプリケーションについてはこちらを参照してください。([docs/README.app.md](docs/README.app.md))
 
 ## 使い方
 
