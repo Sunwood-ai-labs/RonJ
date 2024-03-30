@@ -21,6 +21,20 @@ services:
       sh -c "python initialize.py && 
              python server_fastapi.py"
 
+  vts:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 8787:8787
+    env_file:
+      - .env
+    tty: true
+    working_dir: /app
+    command: uvicorn modules.VTubeModelSwitcherAPI:app --port 8787 --host 0.0.0.0
+
   ron-j:
     build:
       context: ./docker
