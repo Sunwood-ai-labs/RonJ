@@ -8,6 +8,9 @@ import base64
 import os
 from pydub import AudioSegment
 import re
+from loguru import logger
+import aiohttp
+import asyncio
 
 st.set_page_config(
     page_title="RonJ",
@@ -32,18 +35,42 @@ with st.sidebar:
 
 
 # サイドバーでパラメータを設定
-json_file_path = st.sidebar.text_input("JSONファイルのパス", "data/ViTAR_KANA.json")
+json_file_path = st.sidebar.text_input("JSONファイルのパス", "data/FitbitDI_KANA.json")
 emoji_file_path = st.sidebar.text_input("絵文字のテキストファイルのパス", "assets/emojis.txt")
 api_url = st.sidebar.text_input("音声生成のAPIエンドポイント", "http://style-bert-vits2-api:5000/voice")
+
+VTUBESTUDIO_MODEL_NUM = 7
+STYLE_BERT_MODEL_NUM = 7
+
 
 # TextToSpeechインスタンスを作成
 tts = TextToSpeech(api_url=api_url)
 
+async def switch_model(model_index=0, random_expression=False):
+    url = "http://vts:8787/switch_model"
+    data = {"model_index": model_index, "random_expression": random_expression}
+
+    async with aiohttp.ClientSession() as session:
+        async with session.post(url, json=data) as response:
+            if response.status == 200:
+                result = await response.json()
+                print(result["message"])
+            else:
+                print(f"Error: {response.status}")
+
 def load_chat_data(json_file_path):
-    """チャットデータをJSONファイルから読み込む"""
+    """チャットデータをJSONファイルから読み込む。"""
     try:
         with open(json_file_path, "r") as f:
             chat_data = json.load(f)
+        
+        # コードブロックのパターンを定義
+        code_block_pattern = re.compile(r"```[a-z]+\n.*?\n```", re.DOTALL)
+        
+        # コードブロックを削除
+        for item in chat_data:
+            item["text_KANA"] = re.sub(code_block_pattern, "", item["text_KANA"])
+        
         return chat_data
     except FileNotFoundError:
         st.error(f"JSONファイルが見つかりません: {json_file_path}")
@@ -68,10 +95,16 @@ def generate_name_emoji_map(chat_data, emojis):
 def generate_name_voice_map(chat_data):
     """名前と音声IDのマッピングを生成する"""
     unique_names = list(set([message["name"] for message in chat_data]))
-    name_voice_map = {name: random.randrange(0, 7, 1) for name in unique_names}
+    name_voice_map = {name: random.randrange(0, STYLE_BERT_MODEL_NUM, 1) for name in unique_names}
     return name_voice_map
 
-def display_chat(chat_data, name_emoji_map, name_voice_map):
+def generate_name_model_map(chat_data):
+    """名前とModle IDのマッピングを生成する"""
+    unique_names = list(set([message["name"] for message in chat_data]))
+    name_model_map = {name: random.randrange(0, VTUBESTUDIO_MODEL_NUM, 1) for name in unique_names}
+    return name_model_map
+
+async def display_chat(chat_data, name_emoji_map, name_voice_map, name_model_map):
     """チャットを表示する"""
     chat_container = st.container()
     
@@ -93,9 +126,13 @@ def display_chat(chat_data, name_emoji_map, name_voice_map):
     for message in chat_data:
         name = message["name"]
         text = message["text"]
+        text_KANA = message["text_KANA"]
         number = message["number"]
         header = message["header"]
         
+        logger.info(f"text_KANA:{text_KANA}")
+        logger.info(f"text:{text}")
+
         # 名前に応じた絵文字を取得
         emoji = name_emoji_map.get(name, "👤")
         
@@ -110,11 +147,14 @@ def display_chat(chat_data, name_emoji_map, name_voice_map):
                     reply_to = message["replies"][0][2:]
                     st.write(f"＞＞ {reply_to}")
                     
-                # テキストを "。"、"！"、"!" で分割
-                sentences = re.split(r'[。！!]', text)
+                # テキストを "。"、"！"、"!"、そして改行で分割
+                sentences = re.split(r'[。！!\n?？]', text_KANA)
+                await switch_model(model_index=name_model_map.get(name, 1), random_expression=True)
+                st.markdown(text)
+
                 for sentence in sentences:
                     if sentence:
-                        st.write(sentence)
+                        # model switch
                         play_audio(sentence, name_voice_map.get(name, 1))
         
         time.sleep(2)
@@ -122,7 +162,7 @@ def display_chat(chat_data, name_emoji_map, name_voice_map):
 def play_audio(text, voice_id):
     """音声を再生する"""
     # 音声ファイルを生成
-    output_filename = f"{text}.wav"
+    output_filename = f"{text}.wav".replace("/", "_")
     audio_path = f"output/{output_filename}"
     try:
         voice_data = tts.generate_audio(text, output_filename=output_filename, model_id=voice_id)
@@ -153,18 +193,19 @@ def play_audio(text, voice_id):
     # 生成された音声ファイルを削除
     os.remove(audio_path)
 
-def main():
+async def main():
     # st.title("解説求む!新しいVision Transformerアーキテクチャ「ViTAR」")
-    st.title("解説求む!新しいVision Transformerアーキテクチャ「ViTAR」")
-
+    st.title("【朗報】FitbitDI、AI駆使した究極の健康管理アプリ爆誕！ Jの者も健康的になれるんか？")
     
     if st.button("再生"):
         chat_data = load_chat_data(json_file_path)
         emojis = load_emojis(emoji_file_path)
         name_emoji_map = generate_name_emoji_map(chat_data, emojis)
         name_voice_map = generate_name_voice_map(chat_data)
-        
-        display_chat(chat_data, name_emoji_map, name_voice_map)
+        name_model_map = generate_name_model_map(chat_data)
+        logger.info(f"name_model_map:{name_model_map}")
+
+        await display_chat(chat_data, name_emoji_map, name_voice_map, name_model_map)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
