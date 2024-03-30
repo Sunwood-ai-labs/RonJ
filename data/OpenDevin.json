@@ -1,0 +1,112 @@
+[
+    {
+        "name": "走り出す名無し＠なんJ民",
+        "text": "OpenDevinってなんやこれ？AI使って自動でコード書いてくれるんか？すごE",
+        "number": "1",
+        "header": "走り出す名無し＠なんJ民 ：2024/03/29(金) 12:34:56.78 ID:NnJ1234",
+        "replies": []
+    },
+    {
+        "name": "伸びシロ＠なんJ民",
+        "text": "ワイもよう分からんけど、なんかDevinっていうAIエンジニアを再現しようとしてるらしいで",
+        "number": "2",
+        "header": "伸びシロ＠なんJ民 ：2024/03/29(金) 12:36:12.34 ID:NnJ5678",
+        "replies": [
+            ">>1"
+        ]
+    },
+    {
+        "name": "Dockerを知らないと損する＠Python初心者",
+        "text": "Dockerとかpipとか初めて聞いたわ\nインストールからつまづいてもうたｗ",
+        "number": "3",
+        "header": "Dockerを知らないと損する＠Python初心者 ：2024/03/29(金) 12:37:45.67 ID:NnJ9012",
+        "replies": []
+    },
+    {
+        "name": "コンテナ王＠DockerマスターID:NnJ3456",
+        "text": "Dockerはコンテナ型の仮想化ツールやで\nアプリケーションを動かすのに必要な環境を簡単に用意できるんや\npythonのパッケージ管理ツールがpipや\n\nDockerのインストールはこちらを参照してな\nhttps://docs.docker.com/engine/install/\n\nインストールできたら起動して\n\n```\ndocker ps # 正常に終了したらOK\n```\n\nそれからOpenDevinのイメージをプルや\n\n```\ndocker pull ghcr.io/opendevin/sandbox:v0.1\n```",
+        "number": "4",
+        "header": "コンテナ王＠DockerマスターID:NnJ3456",
+        "replies": [
+            ">>3"
+        ]
+    },
+    {
+        "name": "React好き＠フロントエンド開発者 ID:NnJ7890",
+        "text": "フロントエンドはReactかな？\nnpm installとかnpm run startとか出てきてるし\nバックエンドはPythonっぽいな\n\nNode.jsのインストールはこっちを見てな\nhttps://nodejs.org/ja/download",
+        "number": "5",
+        "header": "React好き＠フロントエンド開発者 ID:NnJ7890",
+        "replies": []
+    },
+    {
+        "name": "Pythonista＠バックエンドエンジニア",
+        "text": "せやな\nバックエンドの起動はこんな感じや\n\nWindowsではシステムのプロパティから環境変数設定するんやで\n\n```\nexport OPENAI_API_KEY=\"sk-......\"\nexport WORKSPACE_DIR=\"C:\\Prj\\OpenDevin\"\npython -m pip install -r requirements.txt\nuvicorn opendevin.server.listen:app --port 3000\n```\n\nuvicornってASGI Webサーバーでバックエンド動かしとるわ\nFastAPIとかも使われとるんちゃうか",
+        "number": "6",
+        "header": "Pythonista＠バックエンドエンジニア ：2024/03/29(金) 12:42:23.45 ID:NnJ2345",
+        "replies": [
+            ">>5"
+        ]
+    },
+    {
+        "name": "AI博士＠AI研究者",
+        "text": "事前学習済みのSentence Transformersモデルも使ってるみたいやな\n自然言語をベクトル化して類似度計算とかできるからコード生成に役立ちそうや",
+        "number": "7",
+        "header": "AI博士＠AI研究者 ：2024/03/29(金) 12:44:56.78 ID:NnJ6789",
+        "replies": [
+            ">>1"
+        ]
+    },
+    {
+        "name": "教えて君＠なんJ民",
+        "text": "みんな詳しいなｗ\nフロントエンドの起動方法も教えてクレメンス",
+        "number": "8",
+        "header": "教えて君＠なんJ民 ：2024/03/29(金) 12:46:12.34 ID:NnJ0123",
+        "replies": []
+    },
+    {
+        "name": "ノードでござる＠フロントエンド開発者",
+        "text": "フロントエンドはこうやって起動するんやで\n\n```\ncd frontend\nnpm install\nnpm run start -- --port 3001\n```\n\nんでhttp://localhost:3001/にアクセスや！",
+        "number": "9",
+        "header": "ノードでござる＠フロントエンド開発者 ：2024/03/29(金) 12:47:45.67 ID:NnJ7890",
+        "replies": [
+            ">>8"
+        ]
+    },
+    {
+        "name": "ニシキヘビ＠Python中級者",
+        "text": "起動できたわ！\nsin cos波のPythonコードを生成するって命令してみたら、ほんまにplot_sin_cos.pyってファイルができたで！\n中身はこんな感じや\n\n```python\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.linspace(0, 2*np.pi, 100)\nsin_y = np.sin(x)\ncos_y = np.cos(x)\n\nplt.figure(figsize=(8,6))\nplt.plot(x, sin_y, label='sin')\nplt.plot(x, cos_y, label='cos')\nplt.xlabel('x')\nplt.ylabel('y')\nplt.title('Sin & Cos Waves')\nplt.legend()\nplt.grid()\nplt.show()\n```",
+        "number": "10",
+        "header": "ニシキヘビ＠Python中級者 ：2024/03/29(金) 12:50:23.45 ID:NnJ4567",
+        "replies": []
+    },
+    {
+        "name": "機械学習職人＠機械学習エンジニア",
+        "text": "matplotlibでグラフ描画してるコードやな\n日本語の指示からこれだけ動くコード生成できるってすごいわ",
+        "number": "11",
+        "header": "機械学習職人＠機械学習エンジニア ：2024/03/29(金) 12:52:56.78 ID:NnJ8901",
+        "replies": [
+            ">>10"
+        ]
+    },
+    {
+        "name": "餃子定食＠なんJ民",
+        "text": "ワイもやってみたで！\n円の面積求めるコード作ってって言うたらこんなんできたわ\n\n```python\nimport math\n\ndef circle_area(radius):\n return math.pi * radius ** 2\n\nradius = 5\narea = circle_area(radius)\nprint(f\"半径{radius}の円の面積は{area:.3f}\")\n```",
+        "number": "12",
+        "header": "餃子定食＠なんJ民 ：2024/03/29(金) 12:54:12.34 ID:NnJ2345",
+        "replies": []
+    },
+    {
+        "name": "ソフトウェアの神＠ソフトウェア開発者",
+        "text": "オープンソースでここまでできるのは素晴らしいな\nDevinみたいな自律型AIの実現も夢じゃないかもしれん",
+        "number": "13",
+        "header": "ソフトウェアの神＠ソフトウェア開発者 ：2024/03/29(金) 12:56:45.67 ID:NnJ6789",
+        "replies": []
+    },
+    {
+        "name": "Devin信者＠なんJ民",
+        "text": "みんなOpenDevinに命令出してコード生成を試してみようや！\nこれからの発展が楽しみやな！",
+        "number": "14",
+        "header": "Devin信者＠なんJ民 ：2024/03/29(金) 12:58:23.45 ID:NnJ0123",
+        "replies": []
+    }
+]
