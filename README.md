@@ -10,6 +10,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
 [![Docker](https://img.shields.io/badge/docker-available-blue)](https://www.docker.com/)
 [![](https://img.shields.io/static/v1?label=Blog&message=Sunwood-AI-labs.&color=green)](https://hamaruki.com/)
+[![](https://img.shields.io/static/v1?label=Blog&message=ろんJ_実況～論文をなんJ風に解説＆実況～&color=red)](https://hamaruki.com/)
 
 論文は難しそうで読むのが億劫だと感じたことはありませんか？でもそんな人でも、「ろんJ」を使えば論文の内容が面白おかしく理解できるかもしれません。
 
